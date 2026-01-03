@@ -58,8 +58,8 @@ const Header = ({ darkMode, setDarkMode }: any) => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="absolute top-20 right-4 w-56 flex flex-col items-center md:hidden py-4 gap-4 z-50
-                     bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg rounded-lg"
+          className={`absolute top-20 right-4 w-56 flex flex-col items-center md:hidden py-4 gap-4 z-50
+          ${darkMode ? 'bg-white/90' : 'bg-gray-900/90'} backdrop-blur-md shadow-lg rounded-lg`}
         >
           {links.map((link) => {
             const isResume = link.toLowerCase() === 'resume';
@@ -69,7 +69,7 @@ const Header = ({ darkMode, setDarkMode }: any) => {
                 href={isResume ? '/resume.pdf' : `#${link.toLowerCase()}`}
                 target={isResume ? '_blank' : '_self'}
                 rel={isResume ? 'noopener noreferrer' : undefined}
-                className={`text-sm opacity-90 ${darkMode ? 'text-slate-100' : 'text-slate-800'} hover:text-teal-500 transition-colors`}
+                className={`text-sm opacity-90 ${darkMode ? 'text-slate-800' : 'text-slate-100'} hover:text-teal-500 transition-colors`}
                 onClick={() => setMenuOpen(false)}
               >
                 {link}
