@@ -18,7 +18,7 @@ const projects: Project[] = [
     subtitle: 'Habit & Productivity Tracker',
     description: 'A Java-based journal app to track habits, manage tasks, and monitor personal growth with an intuitive interface.',
     tags: ['Java', 'Redis', 'Spring Security', 'Maven'],
-    imageUrl: '/assets/journalAppJava.webp',
+    imageUrl: '/assets/journalApp.webp',
     url: 'https://github.com/ashishnamdeo16/journalApp'
   },
   {
@@ -78,7 +78,7 @@ export default function Projects({ darkModeFlag }: any) {
                 alt={p.title}
                 className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
             </div>
 
             <h3 className="font-semibold text-xl mb-1">{p.title}</h3>
