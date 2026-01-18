@@ -163,7 +163,7 @@ export default async function BlogPostPage({
               </figure>
             ) : null}
 
-            {/* ✅ Off-white reading surface */}
+            {/* Off-white reading surface */}
             <article
               className="
                 mt-10 max-w-none
@@ -182,7 +182,7 @@ export default async function BlogPostPage({
               </div>
             </article>
 
-            <div className="pointer-events-none mt-16 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="pointer-events-none mt-16 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent" />
           </section>
         </div>
       </main>

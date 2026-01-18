@@ -35,7 +35,7 @@ const Header = ({ darkMode, setDarkMode }: any) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
-  const links = isHomePage ? ['Projects', 'Skills', 'Experience', 'About', 'Contact', 'Resume'] : [];
+  const links = isHomePage ? ['Projects', 'Skills', 'Experience', 'About', 'Contact', 'Blog' ,'Resume'] : [];
 
   return (
     <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
@@ -49,12 +49,13 @@ const Header = ({ darkMode, setDarkMode }: any) => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex gap-6 text-sm opacity-90">
-        {links.map((link) => {
+        {links.length !== 0 && links.map((link) => {
           const isResume = link.toLowerCase() === 'resume';
+          const isBlog = link.toLowerCase() === 'blog';
           return (
             <a
               key={link }
-              href={isResume ? '/resume.pdf' : `#${link.toLowerCase()}`}
+              href={isResume ? '/resume.pdf' : isBlog ? '/blog' : `#${link.toLowerCase()}`}
               target={isResume ? '_blank' : '_self'}
               rel={isResume ? 'noopener noreferrer' : undefined}
               className="relative px-1 transition-all duration-200 border-slate-500 dark:border-slate-500 hover:text-teal-500 hover:scale-105"
@@ -84,6 +85,7 @@ const Header = ({ darkMode, setDarkMode }: any) => {
        
 
         {/* Hamburger */}
+        {isHomePage ? 
         <button
           className="md:hidden flex flex-col gap-1.5 p-1"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -91,7 +93,9 @@ const Header = ({ darkMode, setDarkMode }: any) => {
           <span className={`block w-6 h-0.5 bg-slate-800 dark:bg-slate-500 transition-transform ${menuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
           <span className={`block w-6 h-0.5 bg-slate-800 dark:bg-slate-500 transition-opacity ${menuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
           <span className={`block w-6 h-0.5 bg-slate-800 dark:bg-slate-500 transition-transform ${menuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
-        </button>
+        </button> : null
+      }
+      
       </div>
 
       {/* Mobile Menu */}
@@ -102,10 +106,11 @@ const Header = ({ darkMode, setDarkMode }: any) => {
         >
           {links.map((link) => {
             const isResume = link.toLowerCase() === 'resume';
+            const isBlog = link.toLowerCase() === 'blog';
             return (
               <a
                 key={link}
-                href={isResume ? '/resume.pdf' : `#${link.toLowerCase()}`}
+                href={isResume ? '/resume.pdf' : isBlog ? '/blog' : `#${link.toLowerCase()}`}
                 target={isResume ? '_blank' : '_self'}
                 rel={isResume ? 'noopener noreferrer' : undefined}
                 className={`text-sm opacity-90 ${darkMode ? 'text-slate-800' : 'text-slate-100'} hover:text-teal-500 transition-colors`}
