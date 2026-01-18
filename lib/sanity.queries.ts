@@ -1,6 +1,7 @@
 export const POSTS_QUERY = `*[_type=="post"]|order(publishedAt desc){
   _id,
   title,
+  "metaDescription": metaDescription.value,
   "slug": slug.current,
   publishedAt,
   author->{

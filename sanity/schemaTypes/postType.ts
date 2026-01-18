@@ -56,6 +56,11 @@ export const postType = defineType({
     type: "array",
     of: [{ type: "reference", to: [{ type: "tag" }] }],
   }),
+  defineField({
+  name: "metaDescription",
+  title: "Meta Description",
+  type: "metaDescription",
+}),
 
   ],
   preview: {

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 type PostCard = {
+  metaDescription: string;
   _id: string;
   title: string;
   slug: string;
@@ -24,6 +25,7 @@ type PostCard = {
 
 export default async function BlogPage() {
   const posts: PostCard[] = await sanity.fetch(POSTS_QUERY);
+  console.log("Posts fetched:", posts);
 
   return (
     <div className="min-h-screen bg-linear-to-b from-black via-gray-600 to-black/70 pb-16">
@@ -72,8 +74,7 @@ export default async function BlogPage() {
         {posts.length === 0 ? (
           <div className="rounded-2xl border bg-white p-8 shadow-sm">
             <p className="text-sm text-neutral-600">
-              No posts yet. Open{" "}
-              <span className="font-medium text-neutral-900">/studio</span> to publish your first post.
+              No posts yet. Check back later!
             </p>
           </div>
         ) : (
@@ -121,7 +122,7 @@ export default async function BlogPage() {
                   </div>
 
                   <p className="mt-4 text-sm leading-6 text-neutral-600">
-                    A quick note on what I learned, what broke, and how I fixed it — with code and real examples.
+                   {p.metaDescription || 'No description available.'}
                   </p>
 
                   <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-neutral-900">
