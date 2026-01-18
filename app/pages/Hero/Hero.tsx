@@ -16,8 +16,7 @@ const Hero = () => {
               <span className="text-rose-400">look</span> beautiful.
             </motion.h1>
             <p className="mt-6 max-w-xl">
-              I'm a Graduate Student specializing in AI/ML and Backend systems,
-              blending clean UI, robust backend, and ML workflows.
+              I’m a Graduate Student specializing in Java backend development, with experience building scalable systems and exposure to modern data and ML workflows.
             </p>
           </div>
           <div className="relative">

@@ -1,6 +1,12 @@
+"use client";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+
 const Header = ({ darkMode, setDarkMode }: any) => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -29,14 +35,14 @@ const Header = ({ darkMode, setDarkMode }: any) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
-  const links = ['Projects', 'Skills', 'Experience', 'About', 'Contact', 'Resume'];
+  const links = isHomePage ? ['Projects', 'Skills', 'Experience', 'About', 'Contact', 'Resume'] : [];
 
   return (
     <header className="max-w-6xl mx-auto p-6 flex items-center justify-between">
       {/* Logo / Name */}
       <div className="flex items-center gap-4">
         <div>
-          <div className="text-lg font-semibold">Ashish Namdeo</div>
+          <div className="text-lg font-semibold"><a href='/'>Ashish Namdeo</a></div>
           <div className="text-xs opacity-80">Backend • AI/ML • Frontend</div>
         </div>
       </div>
@@ -47,7 +53,7 @@ const Header = ({ darkMode, setDarkMode }: any) => {
           const isResume = link.toLowerCase() === 'resume';
           return (
             <a
-              key={link}
+              key={link }
               href={isResume ? '/resume.pdf' : `#${link.toLowerCase()}`}
               target={isResume ? '_blank' : '_self'}
               rel={isResume ? 'noopener noreferrer' : undefined}
@@ -63,12 +69,19 @@ const Header = ({ darkMode, setDarkMode }: any) => {
       {/* Mobile Menu & Dark Mode */}
       <div className="flex items-center gap-4">
         {/* Dark Mode Toggle */}
-        <button
-          onClick={() => setDarkMode(!darkMode)}
+        {isHomePage ? 
+        <button onClick={() => setDarkMode(!darkMode)}
           className="px-3 py-1 rounded-md border border-slate-500 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
         >
           {darkMode ? '🌙 Dark' : '☀️ Light'}
-        </button>
+        </button> :  
+        <a href="/"
+          className="px-3 py-1 rounded-md border border-slate-500 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+        >
+          {'Home'}
+        </a>
+        }
+       
 
         {/* Hamburger */}
         <button

@@ -29,7 +29,7 @@ export default function Home(): JSX.Element {
       } min-h-screen antialiased transition-colors duration-500`}
     >
       {/* HEADER */}
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <main className="max-w-6xl mx-auto p-6 space-y-16 transition-colors duration-500">
         {/* HERO */}
