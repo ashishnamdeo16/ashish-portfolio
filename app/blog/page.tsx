@@ -42,7 +42,7 @@ export default async function BlogPage() {
       Writing notes & builds
     </div>
 
-    <h1 className="mt-4 text-4xl font-semibold tracking-tight">
+    <h1 className="mt-4 text-4xl font-semibold tracking-tight text-neutral-300">
       Personal Tech Blog
     </h1>
 
