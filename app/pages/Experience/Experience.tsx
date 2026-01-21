@@ -184,7 +184,7 @@ function ExperienceCard({
                     )}
                     aria-hidden="true"
                   >
-                    {isLeft ? "↗" : "↖"}
+                    {/* {isLeft ? "↗" : "↖"} */}
                   </span>
                 </div>
 
