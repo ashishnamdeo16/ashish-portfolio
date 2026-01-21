@@ -115,7 +115,7 @@ function ExperienceCard({
             )}
           >
             {/* subtle shine */}
-            <div
+            {/* <div
               className={cx(
                 "pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
                 darkModeFlag
@@ -123,7 +123,7 @@ function ExperienceCard({
                   : "bg-gradient-to-tr from-black/0 via-black/5 to-black/0"
               )}
               aria-hidden="true"
-            />
+            /> */}
 
             {/* Row 1: logo + header */}
             <div className="flex gap-4">
