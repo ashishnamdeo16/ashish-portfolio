@@ -89,13 +89,13 @@ function ExperienceCard({
         )}
         aria-hidden="true"
       />
-    <div
-  className={cx(
-    "absolute left-4 top-8 h-3 w-3 -translate-x-1/2 rounded-full md:left-1/2 md:-translate-x-1/2",
-    darkModeFlag ? "bg-white/70" : "bg-black/40"
-  )}
-  aria-hidden="true"
-/>
+      <div
+        className={cx(
+          "absolute left-4 top-8 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl md:left-1/2 md:-translate-x-1/2",
+          darkModeFlag ? "bg-white/15" : "bg-black/10"
+        )}
+        aria-hidden="true"
+      />
 
       {/* Card column placement */}
       <div
@@ -105,7 +105,7 @@ function ExperienceCard({
         )}
       >
         {/* Outer gradient border */}
-        <div className={cx("rounded-3xl p-[1px] bg-gradient-to-br", outerGlow)}>
+        <div className={cx("rounded-3xl p-[1px] bg-gradient-to-br")}>
           <article
             className={cx(
               "group relative rounded-3xl border p-5 sm:p-6 backdrop-blur",
