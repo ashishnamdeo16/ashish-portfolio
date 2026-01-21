@@ -5,7 +5,7 @@ const experience = [
     duration: "Aug 2025 - Nov 2025",
     description: [
       "Created a robust database schema in MarketEQ and integrated it with the application for reliable data storage and retrieval.",
-      "Optimized PostgreSQL performance through query optimization, index redesign, and execution plan analysis, reducing P95 API latency by 26 ms under production traffic."
+      "Optimized PostgreSQL performance through query optimization, index redesign, and execution plan analysis, reducing P95 API latency by 26 ms under production traffic.",
     ],
     logo: "/assets/marketEq.webp",
   },
@@ -17,7 +17,7 @@ const experience = [
       "Provided one-on-one and group tutoring sessions to students in computer science subjects, including programming, data structures, and algorithms.",
       "Assisted students in debugging code and solving technical problems using languages like Java, Python, and JavaScript.",
       "Led study groups to help students prepare for exams and complete programming assignments effectively.",
-      "Collaborated with faculty to identify common learning challenges and create supplementary learning materials."
+      "Collaborated with faculty to identify common learning challenges and create supplementary learning materials.",
     ],
     logo: "/assets/CSUN.svg",
   },
@@ -26,7 +26,7 @@ const experience = [
     company: "LogiNext Solutions",
     duration: "Oct 2021 - Jul 2024",
     description: [
-      "Delivered a dynamic Form and List Builder spanning React and Java microservices,enabling real-time schema updates and reducing configuration effort by 40% for 100K+ daily users.",
+      "Delivered a dynamic Form and List Builder spanning React and Java microservices, enabling real-time schema updates and reducing configuration effort by 40% for 100K+ daily users.",
       "Diagnosed and resolved 500+ critical production bugs, improving system reliability and delivering a ~20% performance gain across core application flows.",
       "Developed a scalable AWS Lambda–based microservice to retrieve and process order reports for 500,000+ daily orders, reducing manual data collection efforts by 50% and improving reporting efficiency.",
       "Migrated key application modules from AngularJS to ReactJS, collaborating closely with backend services to ensure seamless integration. Achieved an ~80% performance improvement, significantly enhancing responsiveness and UX.",
@@ -66,7 +66,6 @@ function ExperienceCard({
   const muted = darkModeFlag ? "text-slate-400" : "text-gray-500";
   const body = darkModeFlag ? "text-slate-200" : "text-gray-800";
 
-  // “cool” border illusion: outer gradient + inner surface
   const outerGlow = darkModeFlag
     ? "from-white/15 via-white/5 to-transparent"
     : "from-black/15 via-black/5 to-transparent";
@@ -106,13 +105,7 @@ function ExperienceCard({
         )}
       >
         {/* Outer gradient border */}
-        <div
-          className={cx(
-            "rounded-3xl p-[1px] bg-gradient-to-br",
-            outerGlow
-          )}
-        >
-          {/* Inner card */}
+        <div className={cx("rounded-3xl p-[1px] bg-gradient-to-br")}>
           <article
             className={cx(
               "group relative rounded-3xl border p-5 sm:p-6 backdrop-blur",
@@ -132,12 +125,15 @@ function ExperienceCard({
               aria-hidden="true"
             />
 
-            <div className="flex items-start gap-4">
+            {/* Row 1: logo + header */}
+            <div className="flex gap-4">
               {item.logo ? (
                 <div
                   className={cx(
                     "h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-2xl border overflow-hidden grid place-items-center",
-                    darkModeFlag ? "border-white/10 bg-white/[0.03]" : "border-black/10 bg-black/[0.02]"
+                    darkModeFlag
+                      ? "border-white/10 bg-white/[0.03]"
+                      : "border-black/10 bg-black/[0.02]"
                   )}
                 >
                   <img
@@ -168,47 +164,60 @@ function ExperienceCard({
                         {item.company}
                       </span>
 
-                      <span className={cx("text-xs uppercase tracking-wider", muted)}>
+                      <span
+                        className={cx(
+                          "text-xs uppercase tracking-wider",
+                          muted
+                        )}
+                      >
                         {item.duration}
                       </span>
                     </div>
                   </div>
 
-                  {/* tiny arrow accent (desktop) */}
+                  {/* tiny arrow accent (optional) */}
                   <span
                     className={cx(
                       "hidden sm:inline-flex text-xs",
                       muted,
                       "transition-transform duration-300",
-                      isLeft ? "group-hover:translate-x-0.5" : "group-hover:-translate-x-0.5"
+                      isLeft
+                        ? "group-hover:translate-x-0.5"
+                        : "group-hover:-translate-x-0.5"
                     )}
                     aria-hidden="true"
                   >
                     {/* {isLeft ? "↗" : "↖"} */}
                   </span>
                 </div>
-
-                <ul className={cx("mt-4 space-y-2 text-sm leading-relaxed", body)}>
-                  {item.description.map((point, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span
-                        className={cx(
-                          "mt-2 h-1.5 w-1.5 rounded-full",
-                          darkModeFlag ? "bg-white/50" : "bg-black/30"
-                        )}
-                      />
-                      <span className="flex-1">{point}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
+
+            {/* Row 2: FULL-WIDTH bullets (starts below logo+header row) */}
+            <ul className={cx("mt-5 space-y-2 text-sm leading-relaxed", body)}>
+              {item.description.map((point, i) => (
+                <li key={i} className="flex gap-3">
+                  <span
+                    className={cx(
+                      "mt-2 h-1.5 w-1.5 rounded-full",
+                      darkModeFlag ? "bg-white/50" : "bg-black/30"
+                    )}
+                  />
+                  <span className="flex-1">{point}</span>
+                </li>
+              ))}
+            </ul>
           </article>
         </div>
       </div>
 
       {/* Empty column spacer so it truly alternates */}
-      <div className={cx("hidden md:block", isLeft ? "md:col-start-2" : "md:col-start-1")} />
+      <div
+        className={cx(
+          "hidden md:block",
+          isLeft ? "md:col-start-2" : "md:col-start-1"
+        )}
+      />
     </li>
   );
 }
@@ -227,12 +236,17 @@ export default function Experience({ darkModeFlag }: ExperienceProps) {
             Experience
           </h2>
 
-          <p className={cx("mt-3 max-w-2xl text-sm sm:text-base", darkModeFlag ? "text-slate-400" : "text-gray-600")}>
-            A timeline of roles where I shipped product, scaled systems, and improved performance.
+          <p
+            className={cx(
+              "mt-3 max-w-2xl text-sm sm:text-base",
+              darkModeFlag ? "text-slate-400" : "text-gray-600"
+            )}
+          >
+            A timeline of roles where I shipped product, scaled systems, and
+            improved performance.
           </p>
         </div>
 
-        {/* Timeline */}
         <ol className="relative mt-10 space-y-6">
           {experience.map((item, index) => (
             <ExperienceCard
