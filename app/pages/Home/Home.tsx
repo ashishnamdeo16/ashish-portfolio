@@ -29,27 +29,38 @@ export default function Home(): JSX.Element {
       } min-h-screen antialiased transition-colors duration-500`}
     >
       {/* HEADER */}
-       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <main className="max-w-6xl mx-auto p-6 space-y-16 transition-colors duration-500">
         {/* HERO */}
-        <Hero />
+        <section id="hero">
+          <Hero />
+        </section>
 
         {/* ABOUT */}
-        <About darkModeFlag={darkMode} />
+        <section id="about">
+          <About darkModeFlag={darkMode} />
+        </section>
 
         {/* EXPERIENCE */}
-
-        <Experience darkModeFlag={darkMode} />
+        <section id="experience">
+          <Experience darkModeFlag={darkMode} />
+        </section>
 
         {/* PROJECTS */}
-        <Projects darkModeFlag={darkMode} />
+        <section id="projects">
+          <Projects darkModeFlag={darkMode} />
+        </section>
 
-        {/* Skills */}
-        <SkillParticlesComponent darkModeFlag={darkMode} />
+        {/* SKILLS */}
+        <section id="skills">
+          <SkillParticlesComponent darkModeFlag={darkMode} />
+        </section>
 
         {/* CONTACT */}
-        <Contact />
+        <section id="contact">
+          <Contact />
+        </section>
 
         {/* FOOTER */}
         <Footer darkModeFlag={darkMode} />

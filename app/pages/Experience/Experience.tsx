@@ -66,9 +66,6 @@ function ExperienceCard({
   const muted = darkModeFlag ? "text-slate-400" : "text-gray-500";
   const body = darkModeFlag ? "text-slate-200" : "text-gray-800";
 
-  const outerGlow = darkModeFlag
-    ? "from-white/15 via-white/5 to-transparent"
-    : "from-black/15 via-black/5 to-transparent";
 
   return (
     <li className="relative grid md:grid-cols-2 md:gap-12">
@@ -86,13 +83,6 @@ function ExperienceCard({
         className={cx(
           "absolute left-4 top-8 h-3 w-3 -translate-x-1/2 rounded-full md:left-1/2 md:-translate-x-1/2",
           darkModeFlag ? "bg-white/70" : "bg-black/40"
-        )}
-        aria-hidden="true"
-      />
-      <div
-        className={cx(
-          "absolute left-4 top-8 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full blur-xl md:left-1/2 md:-translate-x-1/2",
-          darkModeFlag ? "bg-white/15" : "bg-black/10"
         )}
         aria-hidden="true"
       />
@@ -114,16 +104,6 @@ function ExperienceCard({
               "hover:-translate-y-1 hover:shadow-[0_20px_80px_-40px_rgba(0,0,0,0.7)]"
             )}
           >
-            {/* subtle shine */}
-            {/* <div
-              className={cx(
-                "pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-                darkModeFlag
-                  ? "bg-gradient-to-tr from-white/0 via-white/5 to-white/0"
-                  : "bg-gradient-to-tr from-black/0 via-black/5 to-black/0"
-              )}
-              aria-hidden="true"
-            /> */}
 
             {/* Row 1: logo + header */}
             <div className="flex gap-4">
