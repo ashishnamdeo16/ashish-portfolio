@@ -17,12 +17,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
   const post = await sanity.fetch(POST_BY_SLUG_QUERY, { slug });
+  const description = post?.metaDescription?.trim();
+
   return {
     title: post?.title ?? "Post",
-    description: post?.excerpt ?? "",
+    description:description ?? "",
     openGraph: {
       title: post?.title ?? "Post",
-      description: post?.excerpt ?? "",
+      description: description ?? "",
     },
   };
 }

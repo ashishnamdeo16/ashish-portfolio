@@ -17,7 +17,7 @@ export const POSTS_QUERY = `*[_type=="post"]|order(publishedAt desc){
 
 export const POST_BY_SLUG_QUERY = `
 *[_type=="post" && slug.current == $slug][0]{
-  _id, title, excerpt, publishedAt,
+  _id, title, excerpt, publishedAt, "metaDescription": metaDescription.value,
   author->{name},
   mainImage{asset->{url}, alt},
   body,
