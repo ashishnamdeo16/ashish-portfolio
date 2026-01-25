@@ -12,9 +12,15 @@ const routeMap: Record<string, string> = {
   resume: "/resume.pdf",
 };
 
+interface HeaderProps {
+  darkMode?: boolean;
+  setDarkMode?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const landingPaths = ["/", "/projects", "/skills", "/experience", "/about", "/contact"];
 
-const Header = ({ darkMode, setDarkMode }: any) => {
+const Header = ({ darkMode = true, setDarkMode }: HeaderProps) => {
+  console.log("Header darkMode:", darkMode);
 
   const pathname = usePathname();
   const isHomePage = landingPaths.includes(pathname);

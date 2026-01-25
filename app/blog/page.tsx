@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { sanity } from "@/lib/sanity.client";
 import { POSTS_QUERY } from "@/lib/sanity.queries";
-import HeaderClient from "../components/layout/HeaderClient";
 
 
 import { Metadata } from "next";
@@ -13,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 60;
+
 
 type PostCard = {
   metaDescription: string;
@@ -26,11 +26,10 @@ type PostCard = {
 
 export default async function BlogPage() {
   const posts: PostCard[] = await sanity.fetch(POSTS_QUERY);
-  console.log("Posts fetched:", posts);
 
   return (
     <div className="min-h-screen bg-linear-to-b from-black via-gray-600 to-black/70 pb-16">
-      <Header darkmode={true} />
+      <Header darkMode={true} />
     <div className="min-h-screen bg-linear-to-b">
     <main className="mx-auto max-w-5xl px-4 py-12">
       
