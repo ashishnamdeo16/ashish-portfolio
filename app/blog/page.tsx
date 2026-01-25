@@ -5,6 +5,7 @@ import HeaderClient from "../components/layout/HeaderClient";
 
 
 import { Metadata } from "next";
+import Header from "../components/layout/Header";
 
 export const metadata: Metadata = {
   title: "Ashish Namdeo | Blog",
@@ -29,7 +30,7 @@ export default async function BlogPage() {
 
   return (
     <div className="min-h-screen bg-linear-to-b from-black via-gray-600 to-black/70 pb-16">
-      <HeaderClient />
+      <Header darkmode={true} />
     <div className="min-h-screen bg-linear-to-b">
     <main className="mx-auto max-w-5xl px-4 py-12">
       

@@ -80,10 +80,10 @@ useEffect(() => {
       {/* Logo / Name */}
       <div className="flex items-center gap-4">
         <div>
-          <div className="text-lg font-semibold">
+          <div className={`text-lg font-semibold ${darkMode ? "text-white" : "text-black" }"`}>
             <a href="/">Ashish Namdeo</a>
           </div>
-          <div className="text-xs opacity-80">Backend • AI/ML • Frontend</div>
+          <div className={`text-xs opacity-80 ${darkMode ? "text-white" : "text-black" }`}>Backend • AI/ML • Frontend</div>
         </div>
       </div>
 
@@ -101,8 +101,7 @@ useEffect(() => {
                 href={href}
                 target={isResume ? "_blank" : "_self"}
                 rel={isResume ? "noopener noreferrer" : undefined}
-                className="relative px-1 transition-all duration-200 border-slate-500 dark:border-slate-500 hover:text-teal-500 hover:scale-105"
-              >
+                className={`relative px-1 transition-all duration-200  ${darkMode ? "text-white" : "text-black" } border-slate-500 dark:border-slate-500 hover:text-teal-500 hover:scale-105`}>
                 {link}
                 <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-teal-500 transition-all duration-200 group-hover:w-full"></span>
               </a>

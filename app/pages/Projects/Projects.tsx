@@ -98,14 +98,14 @@ export default function Projects({ darkModeFlag }: any) {
             </div>
 
             <div className="flex gap-3">
-              <a href={p.url} target="_blank" rel="noopener noreferrer">
+              {/* <a href={p.url} target="_blank" rel="noopener noreferrer">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   className="flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-emerald-400 text-black font-semibold hover:bg-emerald-500 transition-colors"
                 >
                   Live Demo <FaExternalLinkAlt size={12} />
                 </motion.button>
-              </a>
+              </a> */}
               <a href={p.url} target="_blank" rel="noopener noreferrer">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
