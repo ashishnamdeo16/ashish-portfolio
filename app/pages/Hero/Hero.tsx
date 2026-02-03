@@ -19,16 +19,16 @@ const Hero = () => {
     I’m a Graduate Student passionate about building reliable, scalable software systems, spanning modern web frontends, backend services, and cloud infrastructure.
   </p>
           </div>
-          <div className="relative">
-            <motion.img
-              src="/assets/ashish.webp"
-              alt="Ashish Namdeo"
-              initial={{ scale: 0.98, opacity: 0 }}
+         <div className="relative w-72 md:w-80 lg:w-96 md:h-105 lg:h-120 overflow-hidden rounded-3xl shadow-2xl mx-auto">
+  <motion.img
+    src="/assets/ashish1.webp"
+    alt="Ashish Namdeo"
+    initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="w-full max-w-xs md:max-w-sm h-auto aspect-3/4 rounded-3xl object-cover shadow-2xl mx-auto"
-            />
-          </div>
+    className="w-full h-full object-cover object-top"
+  />
+</div>
         </section>
     );
 };
