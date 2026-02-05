@@ -22,6 +22,15 @@ const projects: Project[] = [
     url: 'https://github.com/ashishnamdeo16/journalApp'
   },
   {
+    id: 'authx',
+    title: 'AuthX',
+    subtitle: 'Authentication & Authorization Service',
+    description: 'Designed with real-world backend architecture and system design principles used in modern SaaS and microservice platforms.',
+    tags: ['Java', 'Redis', 'Spring Security', 'Maven','MySQL','OAuth2.0'],
+    imageUrl: '/assets/authx.webp',
+    url: 'https://github.com/ashishnamdeo16/authx'
+  },
+  {
     id: 'habbit-doc',
     title: 'HabbitDoc',
     subtitle: 'Habit app with AR rewards',
