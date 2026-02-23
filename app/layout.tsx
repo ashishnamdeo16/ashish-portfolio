@@ -1,27 +1,6 @@
-// ✅ app/layout.tsx  (Geist for UI + Source Serif 4 for blog body)
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Analytics from "./components/common/Analytics";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Ashish Namdeo | Software Engineer, AI/ML & Backend Specialist",
@@ -35,11 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem("ashish-portfolio-theme");if(t==="light")document.documentElement.classList.remove("dark");else if(t==="dark")document.documentElement.classList.add("dark");else{document.documentElement.classList.add("dark");}})();`,
+          }}
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -52,7 +33,7 @@ export default function RootLayout({
 
       <Analytics />
 
-      <body className="antialiased font-sans">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

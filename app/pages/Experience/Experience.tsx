@@ -1,3 +1,7 @@
+"use client";
+
+import ScrollReveal from "@/app/components/common/ScrollReveal";
+
 const experience = [
   {
     role: "Software Engineer Intern",
@@ -59,31 +63,21 @@ function ExperienceCard({
 }) {
   const isLeft = side === "left";
 
-  const surface = darkModeFlag
-    ? "bg-white/[0.04] border-white/10 text-slate-100"
-    : "bg-black/[0.03] border-black/10 text-gray-900";
-
-  const muted = darkModeFlag ? "text-slate-400" : "text-gray-500";
-  const body = darkModeFlag ? "text-slate-200" : "text-gray-800";
+  const surface = "bg-[var(--surface)] border-[var(--border)] text-[var(--text)]";
+  const muted = "text-[var(--muted)]";
+  const body = "text-[var(--text)]/90";
 
 
   return (
     <li className="relative grid md:grid-cols-2 md:gap-12">
       {/* Center line */}
       <div
-        className={cx(
-          "absolute left-4 top-0 h-full w-px md:left-1/2 md:-translate-x-1/2",
-          darkModeFlag ? "bg-white/10" : "bg-black/10"
-        )}
+        className="absolute left-4 top-0 h-full w-px md:left-1/2 md:-translate-x-1/2 bg-[var(--border)]"
         aria-hidden="true"
       />
 
-      {/* Dot + soft glow */}
       <div
-        className={cx(
-          "absolute left-4 top-8 h-3 w-3 -translate-x-1/2 rounded-full md:left-1/2 md:-translate-x-1/2",
-          darkModeFlag ? "bg-white/70" : "bg-black/40"
-        )}
+        className="absolute left-4 top-8 h-3 w-3 -translate-x-1/2 rounded-full md:left-1/2 md:-translate-x-1/2 bg-[var(--accent)]"
         aria-hidden="true"
       />
 
@@ -108,14 +102,7 @@ function ExperienceCard({
             {/* Row 1: logo + header */}
             <div className="flex gap-4">
               {item.logo ? (
-                <div
-                  className={cx(
-                    "h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-2xl border overflow-hidden grid place-items-center",
-                    darkModeFlag
-                      ? "border-white/10 bg-white/[0.03]"
-                      : "border-black/10 bg-black/[0.02]"
-                  )}
-                >
+                <div className="h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-2xl border border-[var(--border)] bg-[var(--surface2)] overflow-hidden grid place-items-center">
                   <img
                     src={item.logo}
                     alt={`${item.company} logo`}
@@ -128,25 +115,18 @@ function ExperienceCard({
               <div className="min-w-0 flex-1">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
-                    <h3 className="truncate text-base sm:text-lg font-semibold">
+                    <h3 className="truncate prose-sub font-semibold">
                       {item.role}
                     </h3>
 
                     <div className="mt-1 flex flex-wrap items-center gap-2">
-                      <span
-                        className={cx(
-                          "inline-flex items-center rounded-full border px-2.5 py-1 text-xs",
-                          darkModeFlag
-                            ? "border-white/10 bg-white/[0.03] text-slate-200"
-                            : "border-black/10 bg-black/[0.03] text-gray-800"
-                        )}
-                      >
+                      <span className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface2)] px-2.5 py-1 prose-caption text-[var(--text)]">
                         {item.company}
                       </span>
 
                       <span
                         className={cx(
-                          "text-xs uppercase tracking-wider",
+                          "prose-caption uppercase tracking-wider",
                           muted
                         )}
                       >
@@ -158,8 +138,7 @@ function ExperienceCard({
                   {/* tiny arrow accent (optional) */}
                   <span
                     className={cx(
-                      "hidden sm:inline-flex text-xs",
-                      muted,
+                      "hidden sm:inline-flex text-xs text-[var(--muted)]",
                       "transition-transform duration-300",
                       isLeft
                         ? "group-hover:translate-x-0.5"
@@ -174,15 +153,10 @@ function ExperienceCard({
             </div>
 
             {/* Row 2: FULL-WIDTH bullets (starts below logo+header row) */}
-            <ul className={cx("mt-5 space-y-2 text-sm leading-relaxed", body)}>
+            <ul className={cx("mt-6 space-y-2 prose-body", body)}>
               {item.description.map((point, i) => (
                 <li key={i} className="flex gap-3">
-                  <span
-                    className={cx(
-                      "mt-2 h-1.5 w-1.5 rounded-full",
-                      darkModeFlag ? "bg-white/50" : "bg-black/30"
-                    )}
-                  />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--accent)]/60" />
                   <span className="flex-1">{point}</span>
                 </li>
               ))}
@@ -204,24 +178,14 @@ function ExperienceCard({
 
 export default function Experience({ darkModeFlag }: ExperienceProps) {
   return (
-    <section id="experience" className="py-16">
+    <ScrollReveal as="section" id="experience" className="py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col items-center text-center">
-          <h2
-            className={cx(
-              "text-3xl sm:text-4xl font-extrabold tracking-tight",
-              darkModeFlag ? "text-white" : "text-gray-900"
-            )}
-          >
+          <h2 className="prose-section text-[var(--text)]">
             Experience
           </h2>
 
-          <p
-            className={cx(
-              "mt-3 max-w-2xl text-sm sm:text-base",
-              darkModeFlag ? "text-slate-400" : "text-gray-600"
-            )}
-          >
+          <p className="mt-4 max-w-prose prose-body text-[var(--muted)] mx-auto">
             A timeline of roles where I shipped product, scaled systems, and
             improved performance.
           </p>
@@ -238,6 +202,6 @@ export default function Experience({ darkModeFlag }: ExperienceProps) {
           ))}
         </ol>
       </div>
-    </section>
+    </ScrollReveal>
   );
 }

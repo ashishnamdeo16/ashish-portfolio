@@ -15,54 +15,42 @@ const SkillParticlesComponent = dynamic(
   { ssr: false }
 );
 
+const THEME_KEY = "ashish-portfolio-theme";
+
 export default function Home(): JSX.Element {
-  const [darkMode, setDarkMode] = useState(true); // default light mode
+  const [darkMode, setDarkMode] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const stored = localStorage.getItem(THEME_KEY);
+    const isDark = stored === "dark" || (stored !== "light" && document.documentElement.classList.contains("dark"));
+    setDarkMode(isDark);
+  }, [mounted]);
+
+  const handleSetDarkMode = (value: boolean) => {
+    setDarkMode(value);
+    localStorage.setItem(THEME_KEY, value ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", value);
+  };
 
   return (
-    <div
-      className={`${
-        darkMode ? "bg-neutral-900 text-slate-100" : "bg-white text-slate-900"
-      } min-h-screen antialiased transition-colors duration-500`}
-    >
-      {/* HEADER */}
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased transition-colors duration-300">
+      <Header darkMode={darkMode} setDarkMode={handleSetDarkMode} />
 
-      <main className="max-w-6xl mx-auto p-6 space-y-16 transition-colors duration-500">
-        {/* HERO */}
+      <main className="mx-auto max-w-6xl space-y-16 p-6 transition-colors duration-300">
         <section id="hero">
           <Hero />
         </section>
-
-        {/* ABOUT */}
-        <section id="about">
-          <About darkModeFlag={darkMode} />
-        </section>
-
-        {/* EXPERIENCE */}
-        <section id="experience">
-          <Experience darkModeFlag={darkMode} />
-        </section>
-
-        {/* PROJECTS */}
-        <section id="projects">
-          <Projects darkModeFlag={darkMode} />
-        </section>
-
-        {/* SKILLS */}
-        <section id="skills">
-          <SkillParticlesComponent darkModeFlag={darkMode} />
-        </section>
-
-        {/* CONTACT */}
-        <section id="contact">
-          <Contact />
-        </section>
-
-        {/* FOOTER */}
+        <About darkModeFlag={darkMode} />
+        <Experience darkModeFlag={darkMode} />
+        <Projects darkModeFlag={darkMode} />
+        <SkillParticlesComponent darkModeFlag={darkMode} />
+        <Contact darkModeFlag={darkMode} />
         <Footer darkModeFlag={darkMode} />
       </main>
     </div>

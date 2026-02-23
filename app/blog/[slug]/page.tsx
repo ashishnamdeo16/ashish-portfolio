@@ -15,13 +15,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-
   const post = await sanity.fetch(POST_BY_SLUG_QUERY, { slug });
   const description = post?.metaDescription?.trim();
 
   return {
     title: post?.title ?? "Post",
-    description:description ?? "",
+    description: description ?? "",
     openGraph: {
       title: post?.title ?? "Post",
       description: description ?? "",
@@ -40,15 +39,12 @@ type Post = {
   tags?: { title: string }[];
 };
 
-// ...imports stay same
-
 export default async function BlogPostPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const { slug } = await params;
-
   const post: Post | null = await sanity.fetch(POST_BY_SLUG_QUERY, { slug });
 
   if (!post) return notFound();
@@ -64,20 +60,14 @@ export default async function BlogPostPage({
   const tags = post.tags ?? [];
 
   return (
-    <div>
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black/70 pb-16">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] pb-16 transition-colors duration-300">
       <HeaderClient />
 
-      <main className="relative mx-auto max-w-6xl px-4 py-1 sm:py-1">
-        {/* subtle background decoration */}
-        <div className="pointer-events-none absolute inset-x-0 -top-24 h-72 to-transparent blur-2xl" />
-
-        {/* SINGLE COLUMN */}
+      <main className="relative mx-auto max-w-6xl px-4 py-6 sm:py-8">
         <section className="mt-6">
-          {/* Top back link */}
           <Link
             href="/blog"
-            className="group inline-flex items-center gap-2 py-2 text-sm text-white/90 transition hover:text-white"
+            className="group inline-flex items-center gap-2 py-2 prose-caption text-[var(--muted)] transition hover:text-[var(--accent)]"
           >
             <span aria-hidden className="transition group-hover:-translate-x-0.5">
               ←
@@ -89,22 +79,21 @@ export default async function BlogPostPage({
 
           <header className="py-3">
             <div className="flex flex-col gap-5">
-              <h1 className="mx-auto text-balance text-center font-semibold tracking-tight text-white sm:text-3xl md:text-3xl">
+              <h1 className="mx-auto text-balance text-center font-semibold tracking-tight text-[var(--text)] sm:text-3xl md:text-3xl">
                 {post.title}
               </h1>
 
               {(dateLabel || post.author?.name) && (
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-white/60">
+                <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 prose-caption text-[var(--muted)]">
                   {dateLabel ? (
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/90" />
+                    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface2)] px-3 py-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
                       {dateLabel}
                     </span>
                   ) : null}
-
                   {post.author?.name ? (
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 backdrop-blur">
-                      <span className="h-1.5 w-1.5 rounded-full bg-sky-400/90" />
+                    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface2)] px-3 py-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
                       {post.author.name}
                     </span>
                   ) : null}
@@ -114,84 +103,53 @@ export default async function BlogPostPage({
           </header>
 
           {post.mainImage?.asset?.url ? (
-           <figure className="mt-5">
-  <div className="mx-auto w-full overflow-hidden rounded-3xl border border-white/10 shadow-[0_20px_80px_-40px_rgba(0,0,0,0.7)] sm:w-fit">
-    <Image
-      src={post.mainImage.asset.url}
-      alt={post.mainImage.alt ?? "Cover image"}
-      width={1200}
-      height={600}
-      className="h-auto w-full object-contain sm:w-auto sm:max-w-4xl"
-      priority
-      sizes="(max-width: 640px) 100vw, 896px"
-    />
-  </div>
-         </figure>
-
+            <figure className="mt-5">
+              <div className="mx-auto w-full overflow-hidden rounded-3xl border border-[var(--border)] sm:w-fit">
+                <Image
+                  src={post.mainImage.asset.url}
+                  alt={post.mainImage.alt ?? "Cover image"}
+                  width={1200}
+                  height={600}
+                  className="h-auto w-full object-contain sm:w-auto sm:max-w-4xl"
+                  priority
+                  sizes="(max-width: 640px) 100vw, 896px"
+                />
+              </div>
+            </figure>
           ) : null}
 
-          {/* Off-white reading surface (more “tech doc” feel) */}
-          <article
-            className="
-              mt-10 max-w-none
-              rounded-3xl
-              bg-[#fafafa]
-              px-6 py-10 sm:px-10
-              text-gray-800
-              shadow-[0_40px_120px_-40px_rgba(0,0,0,0.6)]
-            "
-          >
-            <div className="mx-auto w-full max-w-3xl">
+          <article className="mt-10 max-w-none rounded-3xl border border-[var(--border)] bg-[var(--surface)] px-6 py-10 text-[var(--text)] sm:px-10">
+            <div className="mx-auto w-full max-w-prose">
               <PortableText value={post.body ?? []} components={portableTextComponents} />
             </div>
-
-            {/* Topics (Tags) at bottom */}
-           
           </article>
-          {/* Tags / Topics */}
-{tags.length > 0 && (
-  <section className="mx-auto mt-10 max-w-3xl">
-    <div className="flex flex-col gap-3">
-      <h2 className="text-xs font-semibold uppercase tracking-widest text-white/50">
-        Tags
-      </h2>
 
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag, id) => (
-          <span
-            key={id}
-            className="
-              group inline-flex items-center gap-2 rounded-full
-              border border-white/10
-              bg-white/[0.06]
-              px-3 py-1.5
-              text-xs font-medium
-              text-white/80
-              backdrop-blur
-              transition
-              hover:border-white/20
-              hover:bg-white/[0.12]
-            "
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-gray-400/80 transition group-hover:scale-110" />
-            {tag.title}
-          </span>
-        ))}
-      </div>
-    </div>
-   
-  </section>
-  
-)}
+          {tags.length > 0 && (
+            <section className="mx-auto mt-12 max-w-prose">
+              <div className="flex flex-col gap-3">
+                <h2 className="prose-caption font-semibold uppercase tracking-widest text-[var(--muted)]">
+                  Tags
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, id) => (
+                    <span
+                      key={id}
+                      className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface2)] px-3 py-1.5 prose-caption font-medium text-[var(--text)] transition hover:border-[var(--accent)]/40"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+                      {tag.title}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
-
-          <div className="pointer-events-none mt-16 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent" />
+          <div className="pointer-events-none mt-16 h-px w-full bg-gradient-to-r from-transparent via-[var(--border)] to-transparent" />
         </section>
       </main>
-      
-    </div>
-    <Footer />
+
+      <Footer darkModeFlag={true} />
     </div>
   );
 }
-

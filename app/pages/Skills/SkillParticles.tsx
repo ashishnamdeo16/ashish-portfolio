@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, JSX } from "react";
+import ScrollReveal from "@/app/components/common/ScrollReveal";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -73,7 +74,7 @@ const skills: Skill[] = [
   { name: "Kibana", proficiency: 70, icon: <SiKibana /> },
 ];
 
-const Helix: React.FC<{ darkModeFlag: boolean }> = ({ darkModeFlag }) => {
+const Helix: React.FC = () => {
   const groupRef = useRef<THREE.Group>(null);
   const scrollProgress = useRef(0);
   const { mouse, viewport } = useThree();
@@ -141,9 +142,7 @@ useFrame((state, delta) => {
         return (
           <group key={skill.name} position={[x, y, z]}>
             <Html center distanceFactor={8}>
-              <div  style={{
-    color: darkModeFlag ? "#34D399": "#000",
-  }}>
+              <div style={{ color: "var(--accent)" }}>
                 <span className="text-xl">{skill.icon}</span>
                 <span className="text-sm font-semibold whitespace-nowrap">{skill.name}</span>
               </div>
@@ -157,13 +156,13 @@ useFrame((state, delta) => {
 
 const SkillParticles: React.FC<{ darkModeFlag: boolean }> = ({ darkModeFlag }) => {
   return (
-    <section id="skills" className="h-screen w-full py-16">
-      <h2 className="text-3xl font-extrabold text-center mb-6">Skills</h2>
+    <ScrollReveal as="section" id="skills" className="h-screen w-full py-16">
+      <h2 className="prose-section text-center mb-8 text-[var(--text)]">Skills</h2>
 
       <Canvas camera={{ position: [0, 0, 18], fov: 50 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
-        <Helix darkModeFlag={darkModeFlag} />
+        <Helix />
 
         <OrbitControls
           enableZoom
@@ -174,7 +173,7 @@ const SkillParticles: React.FC<{ darkModeFlag: boolean }> = ({ darkModeFlag }) =
            autoRotateSpeed={10}
         />
       </Canvas>
-    </section>
+    </ScrollReveal>
   );
 };
 
