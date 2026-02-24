@@ -32,7 +32,7 @@ export default async function BlogPage() {
         <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-3 py-1 prose-caption text-[var(--muted)]">
-              <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
+              <span className="h-2 w-2 rounded-full bg-[var(--accent)] animate-blink" />
               Writing notes & builds
             </div>
             <h1 className="mt-6 prose-section text-[var(--text)]">

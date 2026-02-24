@@ -113,3 +113,15 @@ html {
   max-width: var(--max-w-prose);
 }
 
+/* Blink animation for status indicator */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-blink {
+    animation: blink 1.5s ease-in-out infinite;
+  }
+}
+

@@ -130,19 +130,29 @@ const Header = ({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: (v:
             <button
               ref={hamburgerRef}
               type="button"
-              className="md:hidden flex flex-col justify-center gap-1.5 w-10 h-10 rounded-lg hover:bg-[var(--surface2)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+              className={`md:hidden flex flex-col justify-center items-center gap-1.5 w-11 h-11 rounded-xl border transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 ml-1 ${
+                menuOpen
+                  ? "border-[var(--accent)]/40 bg-[var(--accent)]/10"
+                  : "border-[var(--border)] bg-[var(--surface)] hover:border-[var(--accent)]/30 hover:bg-[var(--surface2)] active:scale-95"
+              }`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
               aria-label="Toggle menu"
             >
               <span
-                className={`block h-0.5 w-5 rounded-full bg-[var(--text)] transition-all duration-200 ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+                className={`block h-0.5 w-5 rounded-full bg-[var(--text)] transition-all duration-300 ease-out origin-center ${
+                  menuOpen ? "translate-y-2 rotate-45" : ""
+                }`}
               />
               <span
-                className={`block h-0.5 w-5 rounded-full bg-[var(--text)] transition-opacity duration-200 ${menuOpen ? "opacity-0" : "opacity-100"}`}
+                className={`block h-0.5 w-5 rounded-full bg-[var(--text)] transition-all duration-300 ease-out ${
+                  menuOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
+                }`}
               />
               <span
-                className={`block h-0.5 w-5 rounded-full bg-[var(--text)] transition-all duration-200 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+                className={`block h-0.5 w-5 rounded-full bg-[var(--text)] transition-all duration-300 ease-out origin-center ${
+                  menuOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
               />
             </button>
           )}
