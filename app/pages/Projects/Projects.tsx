@@ -16,6 +16,24 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: 'carpool',
+    title: 'Carpool',
+    subtitle: 'Ride-sharing & Commute Coordination',
+    description: 'A carpool app to connect riders and drivers for shared commutes, reducing emissions and travel costs.',
+    tags: ['React', 'Java', 'MySQL'],
+    imageUrl: '/assets/Carpool.webp',
+    url: 'https://github.com/ashishnamdeo16/carpool'
+  },
+  {
+    id: 'netguardian',
+    title: 'Deep Packet Inspection',
+    subtitle: 'Network Security & DPI',
+    description: 'Deep packet inspection tool for network traffic analysis, threat detection, and protocol identification.',
+    tags: ['Java','Python', 'Networking', 'Security'],
+    imageUrl: '/assets/netgd.webp',
+    url: 'https://github.com/ashishnamdeo16/netguardian-dpi'
+  },
+  {
     id: 'journal-app-java',
     title: 'My Journal App',
     subtitle: 'Habit & Productivity Tracker',
@@ -84,43 +102,43 @@ export default function Projects({ darkModeFlag }: { darkModeFlag: boolean }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={prefersReducedMotion ? { duration: 0 } : { delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-            whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.2 } }}
-            className="group rounded-3xl p-6 cursor-pointer transform-gpu transition-all duration-300 bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] hover:border-[var(--accent)]/30 hover:shadow-xl hover:shadow-[var(--accent)]/5"
+            whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
+            className="group flex flex-col overflow-hidden rounded-2xl cursor-pointer transition-all duration-300 bg-[var(--surface)]/80 backdrop-blur-sm border border-[var(--border)]/80 text-[var(--text)] hover:border-[var(--accent)]/20 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:bg-[var(--surface)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)]"
           >
-            <div className="relative overflow-hidden rounded-2xl mb-4">
+            <div className="relative aspect-video shrink-0 overflow-hidden bg-[var(--surface2)]/50">
               <img
                 src={p.imageUrl}
                 alt={p.title}
-                className="w-full h-48 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)]/60 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            <h3 className="prose-sub font-semibold mb-2">{p.title}</h3>
-            <p className="prose-caption mb-3 text-[var(--muted)]">{p.subtitle}</p>
-            <p className="prose-body mb-5 text-[var(--text)]/90">{p.description}</p>
+            <div className="flex flex-col flex-1 p-5 sm:p-6">
+              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-[var(--accent)]">{p.subtitle}</p>
+              <h3 className="text-lg font-semibold tracking-tight text-[var(--text)] mb-3 transition-colors duration-200 group-hover:text-[var(--accent)]">{p.title}</h3>
+              <p className="line-clamp-3 text-[15px] leading-relaxed text-[var(--muted)] flex-1 mb-5">{p.description}</p>
 
-            <div className="flex flex-wrap gap-2 mb-5">
-              {p.tags.map((t) => (
-                <motion.span
-                  key={t}
-                  whileHover={{ y: -2, scale: 1.05 }}
-                  className="prose-caption font-medium px-3 py-1 rounded-full bg-[var(--surface2)] text-[var(--muted)]"
-                >
-                  {t}
-                </motion.span>
-              ))}
-            </div>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {p.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-medium px-2.5 py-1 rounded-md bg-[var(--surface2)]/80 text-[var(--muted)] border border-[var(--border)]/50"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-            <div className="flex gap-3">
-              <a href={p.url} target="_blank" rel="noopener noreferrer" className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] rounded-full inline-block">
-                <motion.button
-                  whileHover={{ scale: 1.08, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex items-center gap-2 prose-body px-4 py-2 rounded-full border border-[var(--border)] font-medium text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent)]/10 transition-all duration-300"
-                >
-                  Code <FaGithub size={14} />
-                </motion.button>
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[var(--accent)] hover:gap-3 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 rounded-lg w-fit"
+              >
+                <FaGithub size={16} className="opacity-80" />
+                View code
+                <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
               </a>
             </div>
           </motion.article>
