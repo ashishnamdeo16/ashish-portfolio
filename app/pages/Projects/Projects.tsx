@@ -21,7 +21,7 @@ const projects: Project[] = [
     subtitle: 'Ride-sharing & Commute Coordination',
     description: 'A carpool app to connect riders and drivers for shared commutes, reducing emissions and travel costs.',
     tags: ['React', 'Java', 'MySQL'],
-    imageUrl: '/assets/Carpool.webp',
+    imageUrl: '/assets/CarPool.webp',
     url: 'https://github.com/ashishnamdeo16/carpool'
   },
   {
