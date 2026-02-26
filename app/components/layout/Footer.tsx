@@ -24,7 +24,7 @@ const Footer = ({ darkModeFlag }: { darkModeFlag: boolean }) => {
           <FaLinkedin size={24} className="transition-transform duration-300 group-hover:rotate-12" />
         </a>
         <a
-          href="https://leetcode.com/u/ashishnamdeo16/"
+          href="https://leetcode.com/u/ashishnamdeo14/"
           target="_blank"
           rel="noopener noreferrer"
           className="group rounded-full p-2 text-[var(--muted)] transition-all duration-300 hover:text-amber-500 hover:scale-125 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
