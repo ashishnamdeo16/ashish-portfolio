@@ -9,7 +9,7 @@ const Footer = ({ darkModeFlag }: { darkModeFlag: boolean }) => {
           href="https://github.com/ashishnamdeo16"
           target="_blank"
           rel="noopener noreferrer"
-          className="group rounded-full p-2 text-[var(--muted)] transition-all duration-300 hover:text-emerald-400 hover:scale-125 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+          className="group rounded-full p-2 text-[var(--muted)] transition-all duration-300 hover:text-white hover:scale-125 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
           aria-label="GitHub"
         >
           <FaGithub size={24} className="transition-transform duration-300 group-hover:rotate-12" />
