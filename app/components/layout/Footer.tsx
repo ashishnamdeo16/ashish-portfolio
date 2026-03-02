@@ -42,7 +42,7 @@ const Footer = ({ darkModeFlag }: { darkModeFlag: boolean }) => {
           <FaInstagram size={24} className="transition-transform duration-300 group-hover:rotate-12" />
         </a>
       </div>
-      <div className="prose-caption">© 2025 Ashish Namdeo. All rights reserved.</div>
+      <div className="prose-caption">© 2026 Ashish Namdeo. All rights reserved.</div>
     </footer>
   );
 };
