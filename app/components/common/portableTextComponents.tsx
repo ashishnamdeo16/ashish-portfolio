@@ -161,6 +161,62 @@ export const portableTextComponents = {
       );
     },
 
+    // ✅ Table block type (@sanity/table)
+    table: ({ value }: any) => {
+      const rows = (value?.rows ?? (value?.value?.rows)) as { _key?: string; cells: string[] }[] | undefined;
+      const safeRows = Array.isArray(rows) ? rows : [];
+
+      if (safeRows.length === 0) {
+        return (
+          <div className="my-10 rounded-3xl border border-dashed border-[var(--border)] bg-[var(--surface2)]/50 px-6 py-8 text-center prose-caption text-[var(--muted)]">
+            Empty table
+          </div>
+        );
+      }
+
+      const [head, ...restRows] = safeRows;
+      const headCells = Array.isArray(head?.cells) ? head.cells : [];
+      const bodyRows = restRows.filter(
+        (row) => Array.isArray(row?.cells) && row.cells.some((c) => String(c ?? "").trim() !== "")
+      );
+
+      return (
+        <div className="my-10 overflow-x-auto rounded-3xl border border-[var(--border)] bg-[var(--surface2)]">
+          <table className="w-full min-w-[300px] border-collapse">
+            <thead>
+              <tr>
+                {headCells.map((cell, i) => (
+                  <th
+                    key={i}
+                    className="border-b border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-left prose-caption font-semibold text-[var(--text)]"
+                  >
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, rowIndex) => (
+                <tr
+                  key={(row as { _key?: string })._key ?? rowIndex}
+                  className="border-b border-[var(--border)] last:border-b-0"
+                >
+                  {(Array.isArray(row?.cells) ? row.cells : []).map((cell, cellIndex) => (
+                    <td
+                      key={cellIndex}
+                      className="px-4 py-3 prose-body text-[var(--text)]/90"
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
+
     // ✅ Callout object type
     callout: ({ value }: any) => {
       const tone = (value?.tone as string | undefined) || "note";
