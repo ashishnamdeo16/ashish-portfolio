@@ -13,18 +13,18 @@ const experience = [
     ],
     logo: "/assets/marketEq.webp",
   },
-  {
-    role: "Teaching Assistant",
-    company: "CSUN",
-    duration: "Jan 2025 - May 2025",
-    description: [
-      "Provided one-on-one and group tutoring sessions to students in computer science subjects, including programming, data structures, and algorithms.",
-      "Assisted students in debugging code and solving technical problems using languages like Java, Python, and JavaScript.",
-      "Led study groups to help students prepare for exams and complete programming assignments effectively.",
-      "Collaborated with faculty to identify common learning challenges and create supplementary learning materials.",
-    ],
-    logo: "/assets/CSUN.svg",
-  },
+  // {
+  //   role: "Teaching Assistant",
+  //   company: "CSUN",
+  //   duration: "Jan 2025 - May 2025",
+  //   description: [
+  //     "Provided one-on-one and group tutoring sessions to students in computer science subjects, including programming, data structures, and algorithms.",
+  //     "Assisted students in debugging code and solving technical problems using languages like Java, Python, and JavaScript.",
+  //     "Led study groups to help students prepare for exams and complete programming assignments effectively.",
+  //     "Collaborated with faculty to identify common learning challenges and create supplementary learning materials.",
+  //   ],
+  //   logo: "/assets/CSUN.svg",
+  // },
   {
     role: "Software Engineer",
     company: "LogiNext Solutions",
