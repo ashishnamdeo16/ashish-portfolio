@@ -8,8 +8,9 @@ const experience = [
     company: "Marketeq Digital",
     duration: "Aug 2025 - Nov 2025",
     description: [
-      "Created a robust database schema in MarketEQ and integrated it with the application for reliable data storage and retrieval.",
-      "Optimized PostgreSQL performance through query optimization, index redesign, and execution plan analysis, reducing P95 API latency by 26 ms under production traffic.",
+      "Implemented resilience patterns including retries and circuit breakers to improve backend service reliability, reducing error rates by 15% and improving user experience during transient failures",
+      "Implemented caching strategies using Redis, reducing database load and improving API response times by 35% for frequently accessed data",
+      "Collaborated cross-functionally with product and QA teams to define API contracts and acceptance criteria, reducing post-release defects and aligning timelines for a successful product launch",
     ],
     logo: "/assets/marketEq.webp",
   },
@@ -30,16 +31,29 @@ const experience = [
     company: "LogiNext Solutions",
     duration: "Oct 2021 - Jul 2024",
     description: [
-      "Delivered a dynamic Form and List Builder spanning React and Java microservices, enabling real-time schema updates and reducing configuration effort by 40% for 100K+ daily users.",
-      "Diagnosed and resolved 500+ critical production bugs, improving system reliability and delivering a ~20% performance gain across core application flows.",
-      "Developed a scalable AWS Lambda–based microservice to retrieve and process order reports for 500,000+ daily orders, reducing manual data collection efforts by 50% and improving reporting efficiency.",
-      "Migrated key application modules from AngularJS to ReactJS, collaborating closely with backend services to ensure seamless integration. Achieved an ~80% performance improvement, significantly enhancing responsiveness and UX.",
-      "Designed and implemented a centralized Redmine Project Dashboard using ReactJS and Java to visualize project metrics, track task progress, and monitor team performance. Reduced report generation time by 60% for 15+ team members, streamlining project workflows.",
-      "CMS Platform Leadership: Led the development of a custom CMS platform with a team of 3 engineers, using ReactJS and NodeJS to manage blogs, articles, and multimedia content. Improved content management efficiency by 35% and reduced publishing time by 25%.",
-      "Built an intelligent Auto Assignment engine for trip management using order locations and saved configuration rules to automatically select optimal trips. Reduced manual assignment time by 20–25% across 10,000+ daily trips, improving operational efficiency.",
+      "Delivered a dynamic Form and List Builder spanning React and Java microservices, enabling real-time schema updates and reducing configuration effort by 40% for 100K+ daily users",
+      "Diagnosed and resolved 500+ critical production bugs, improving system reliability and delivering a ~20% performance gain across core application flows",
+      "Developed a scalable AWS Lambda–based microservice to retrieve and process order reports for 500,000+ daily orders, reducing manual data collection efforts by 50% and improving reporting efficiency",
+      "Migrated key application modules from AngularJS to ReactJS, collaborating closely with backend services to ensure seamless integration. Achieved an ~80% performance improvement, significantly enhancing responsiveness and UX",
+      "Designed and implemented a centralized Redmine Project Dashboard using ReactJS and Java to visualize project metrics, track task progress, and monitor team performance. Reduced report generation time by 60% for 15+ team members, streamlining project workflows",
+      "CMS Platform Leadership: Led the development of a custom CMS platform with a team of 3 engineers, using ReactJS and NodeJS to manage blogs, articles, and multimedia content. Improved content management efficiency by 35% and reduced publishing time by 25%",
+      "Built an intelligent Auto Assignment engine for trip management using order locations and saved configuration rules to automatically select optimal trips. Reduced manual assignment time by 20–25% across 10,000+ daily trips, improving operational efficiency",
     ],
     logo: "/assets/loginext.png",
   },
+  {
+    role: "Software Engineer",
+    company: "JalaRam Infrastructure",
+    duration: "Sep 2020 - Sep 2021",
+    description: [
+      "Refactored MongoDB query flows and indexing strategies, improving data fetch speeds by 35% and reducing server load by 20% for high-traffic endpoints",
+      "Drove Agile sprints, Git workflows, code reviews, and production debugging for business-critical construction workflows",
+      "Designed high-throughput NodeJS REST APIs on MongoDB, reducing response latency by 25% across construction management services",
+      "Architected real-time bidirectional communication via WebSockets and Socket.IO, enabling live material and inventory tracking across project sites",
+      "Built reusable React.js components with Redux Toolkit state management, scaling the platform to 2000+ active users with zero rendering inconsistencies"
+    ],
+    logo: "/assets/Jala.webp",
+  }
 ];
 
 type ExperienceItem = (typeof experience)[number];
