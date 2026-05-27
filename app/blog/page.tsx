@@ -2,7 +2,7 @@ import Link from "next/link";
 import { sanity } from "@/lib/sanity.client";
 import { POSTS_QUERY } from "@/lib/sanity.queries";
 import { Metadata } from "next";
-import HeaderClient from "../components/layout/HeaderClient";
+import SiteChrome from "@/app/components/layout/SiteChrome";
 import Footer from "@/app/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -26,9 +26,8 @@ export default async function BlogPage() {
   const posts: PostCard[] = await sanity.fetch(POSTS_QUERY);
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] pb-16 transition-colors duration-300">
-      <HeaderClient />
-      <main className="mx-auto max-w-5xl px-4 py-12">
+    <SiteChrome>
+      <main className="content-section max-w-5xl pb-16">
         <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-3 py-1 prose-caption text-[var(--muted)]">
@@ -100,6 +99,6 @@ export default async function BlogPage() {
       </main>
 
       <Footer darkModeFlag={true} />
-    </div>
+    </SiteChrome>
   );
 }

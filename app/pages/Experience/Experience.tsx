@@ -1,6 +1,7 @@
 "use client";
 
 import ScrollReveal from "@/app/components/common/ScrollReveal";
+import SectionHeading from "@/app/components/common/SectionHeading";
 
 const experience = [
   {
@@ -192,12 +193,10 @@ function ExperienceCard({
 
 export default function Experience({ darkModeFlag }: ExperienceProps) {
   return (
-    <ScrollReveal as="section" id="experience" className="py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex flex-col items-center text-center">
-          <h2 className="prose-section text-[var(--text)]">
-            Experience
-          </h2>
+    <ScrollReveal as="section" id="experience">
+      <div>
+        <div className="flex flex-col items-center text-center mb-8">
+          <SectionHeading tag="h2" title="Experience" accent />
 
           <p className="mt-4 max-w-prose prose-body text-[var(--muted)] mx-auto">
             A timeline of roles where I shipped product, scaled systems, and

@@ -1,19 +1,18 @@
 "use client";
 
 import { useState, useEffect, JSX } from "react";
-import dynamic from "next/dynamic";
 import Experience from "@/app/pages/Experience/Experience";
 import Contact from "@/app/pages/Contact/contact";
 import Projects from "../Projects/Projects";
-import Header from "@/app/components/layout/Header";
 import About from "../About/About";
 import Footer from "@/app/components/layout/Footer";
 import Hero from "../Hero/Hero";
+import Sidebar from "@/app/components/layout/Sidebar";
+import MobileHeader from "@/app/components/layout/MobileHeader";
+import ScrollIndicator from "@/app/components/common/ScrollIndicator";
+import RouteChangeLoader from "@/app/components/common/RouteChangeLoader";
 
-const SkillParticlesComponent = dynamic(
-  () => import("@/app/pages/Skills/SkillParticles"),
-  { ssr: false }
-);
+import Skills from "@/app/pages/Skills/Skills";
 
 const THEME_KEY = "ashish-portfolio-theme";
 
@@ -39,20 +38,34 @@ export default function Home(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased transition-colors duration-300">
-      <Header darkMode={darkMode} setDarkMode={handleSetDarkMode} />
+    <div className="portfolio-shell">
+      <RouteChangeLoader />
+      <Sidebar darkMode={darkMode} setDarkMode={handleSetDarkMode} />
 
-      <main className="mx-auto max-w-6xl space-y-16 p-6 transition-colors duration-300">
-        <section id="hero">
+      <div className="portfolio-main">
+        <MobileHeader darkMode={darkMode} setDarkMode={handleSetDarkMode} />
+        <ScrollIndicator />
+
+        <main>
           <Hero />
-        </section>
-        <About darkModeFlag={darkMode} />
-        <Experience darkModeFlag={darkMode} />
-        <Projects darkModeFlag={darkMode} />
-        <SkillParticlesComponent darkModeFlag={darkMode} />
-        <Contact darkModeFlag={darkMode} />
-        <Footer darkModeFlag={darkMode} />
-      </main>
+          <div className="content-section content-section--after-hero">
+            <About darkModeFlag={darkMode} />
+          </div>
+          <div className="content-section">
+            <Experience darkModeFlag={darkMode} />
+          </div>
+          <div className="content-section content-section--flush">
+            <Projects darkModeFlag={darkMode} />
+          </div>
+          <div className="content-section content-section--flush">
+            <Skills darkModeFlag={darkMode} />
+          </div>
+          <div className="content-section">
+            <Contact darkModeFlag={darkMode} />
+          </div>
+          <Footer darkModeFlag={darkMode} />
+        </main>
+      </div>
     </div>
   );
 }

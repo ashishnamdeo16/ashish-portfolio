@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { sanity } from "@/lib/sanity.client";
 import { POST_BY_SLUG_QUERY } from "@/lib/sanity.queries";
-import HeaderClient from "@/app/components/layout/HeaderClient";
+import SiteChrome from "@/app/components/layout/SiteChrome";
 import { portableTextComponents } from "@/app/components/common/portableTextComponents";
 import { Metadata } from "next";
 import Footer from "@/app/components/layout/Footer";
@@ -60,10 +60,8 @@ export default async function BlogPostPage({
   const tags = post.tags ?? [];
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] pb-16 transition-colors duration-300">
-      <HeaderClient />
-
-      <main className="relative mx-auto max-w-6xl px-4 py-6 sm:py-8">
+    <SiteChrome>
+      <main className="content-section max-w-6xl pb-16">
         <section className="mt-6">
           <Link
             href="/blog"
@@ -150,6 +148,6 @@ export default async function BlogPostPage({
       </main>
 
       <Footer darkModeFlag={true} />
-    </div>
+    </SiteChrome>
   );
 }

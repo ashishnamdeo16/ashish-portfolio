@@ -1,36 +1,91 @@
-import { motion } from "framer-motion";
+"use client";
 
-const Hero = () => {
-    return (
-         <section className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div>
-            <motion.h1
-              initial={{ y: -20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-extrabold leading-tight text-[var(--text)]"
-            >
-              Building systems that{" "}
-              <span className="text-emerald-400">think</span>,{" "}
-              <span className="text-yellow-300">perform</span>, and{" "}
-              <span className="text-rose-400">look</span> beautiful.
-            </motion.h1>
-            <p className="mt-8 prose-body prose-prose text-[var(--muted)]">
-              I'm a Graduate Student passionate about building reliable, scalable software systems, spanning modern web frontends, backend services, and cloud infrastructure.
-            </p>
-          </div>
-         <div className="relative w-72 md:w-80 lg:w-96 md:h-105 lg:h-120 overflow-hidden rounded-3xl shadow-2xl mx-auto ring-1 ring-[var(--border)]">
-  <motion.img
-    src="/assets/ashish1.webp"
-    alt="Ashish Namdeo"
-    initial={{ scale: 0.98, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-    className="w-full h-full object-cover object-top"
-  />
-</div>
-        </section>
-    );
-};
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import AnimatedLetters from "@/app/components/common/AnimatedLetters";
+import { SITE } from "@/app/lib/site";
 
-export default Hero;
+const nameArray = ["A", "s", "h", "i", "s", "h", ","];
+const roleArray = [
+  "s",
+  "o",
+  "f",
+  "t",
+  "w",
+  "a",
+  "r",
+  "e",
+  "\u00A0",
+  "e",
+  "n",
+  "g",
+  "i",
+  "n",
+  "e",
+  "e",
+  "r",
+  ".",
+];
+
+export default function Hero() {
+  const [letterClass, setLetterClass] = useState("text-animate");
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLetterClass("text-animate-hover"), 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const onEnter = (e: React.MouseEvent<HTMLSpanElement>) => {
+    e.currentTarget.classList.add("rubberBand");
+  };
+  const onEnd = (e: React.AnimationEvent<HTMLSpanElement>) => {
+    e.currentTarget.classList.remove("rubberBand");
+  };
+
+  return (
+    <section className="hero-page" id="hero" aria-label="Introduction">
+      <span className="hero-page__tags hero-page__tags--top-html">&lt;/html&gt;</span>
+      <span className="hero-page__tags hero-page__tags--top-body">&lt;body&gt;</span>
+
+      <div className="hero-page__inner">
+        <div className="hero-page__text">
+          <h1>
+            <span className={letterClass} onMouseEnter={onEnter} onAnimationEnd={onEnd}>
+              H
+            </span>
+            <span className={`${letterClass} _12`} onMouseEnter={onEnter} onAnimationEnd={onEnd}>
+              i,
+            </span>
+            <br />
+            <span className={`${letterClass} _13`} onMouseEnter={onEnter} onAnimationEnd={onEnd}>
+              I
+            </span>
+            <span className={`${letterClass} _14`} onMouseEnter={onEnter} onAnimationEnd={onEnd}>
+              &apos;m
+            </span>{" "}
+            <AnimatedLetters letterClass={letterClass} strArray={nameArray} idx={15} />
+            <br />
+            <AnimatedLetters letterClass={letterClass} strArray={roleArray} idx={22} />
+          </h1>
+
+          <p className="hero-page__subtitle">{SITE.subtitle}</p>
+
+          <Link href="/contact" className="hero-page__cta">
+            Contact me
+          </Link>
+        </div>
+
+        <div className="hero-page__portrait">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/ashish1.webp" alt={`Portrait of ${SITE.name}`} width={400} height={500} loading="eager" />
+        </div>
+      </div>
+
+      <span className="hero-page__tags hero-page__tags--bottom">
+        &lt;/body&gt;
+        <br />
+        <span style={{ marginLeft: "-1.25rem" }}>&lt;/html&gt;</span>
+      </span>
+    </section>
+  );
+}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ScrollReveal from "@/app/components/common/ScrollReveal";
+import SectionHeading from "@/app/components/common/SectionHeading";
 
 const About = ({ darkModeFlag }: { darkModeFlag: boolean }) => {
 
@@ -17,7 +18,7 @@ const About = ({ darkModeFlag }: { darkModeFlag: boolean }) => {
     return (
         <>
          <ScrollReveal as="section" id="about" className="space-y-8">
-          <h2 className="prose-section text-[var(--text)]">About Me</h2>
+          <SectionHeading tag="h2" title="About Me" accent />
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="space-y-6">
                <p className="prose-body prose-prose text-[var(--text)]">

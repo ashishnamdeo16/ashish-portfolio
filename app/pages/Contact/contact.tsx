@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ScrollReveal from "@/app/components/common/ScrollReveal";
+import SectionHeading from "@/app/components/common/SectionHeading";
 
 export default function Contact({ darkModeFlag }: { darkModeFlag?: boolean }) {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -33,8 +34,8 @@ export default function Contact({ darkModeFlag }: { darkModeFlag?: boolean }) {
   };
 
   return (
-    <ScrollReveal as="section" id="contact" className="flex flex-col items-center justify-center py-20">
-      <h2 className="prose-section mb-10 text-[var(--text)]">Contact</h2>
+    <ScrollReveal as="section" id="contact" className="flex flex-col items-center justify-center">
+      <SectionHeading tag="h2" title="Contact" accent className="mb-10 text-center" />
 
       <form onSubmit={handleSubmit} className="grid gap-5 w-full max-w-lg">
         <input
